@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Checkout example · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="styles/form-validation.css" rel="stylesheet">
+    <link href="styles/header.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <header id="header">
+    <div class="nav-span">
+      <span id="logos">ToDoList</span>
+      <nav>
+        <a class="nav-a" href="/sign-in">Вход</a>
+        <a class="nav-a  nav-active-a" href="#">Регистрация</a>
+      </nav>
+    </div>
+  </header>
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="images/TDLI.png" alt="" width="72" height="72">
+    <h2>Регистрация</h2>
+  </div>
+
+  
+    <div class="col-md-12 order-md-1 ">
+      <h4 class="mb-3">Данные для заполнения</h4>
+      <form th:action="@{/registration}" method="POST">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Имя</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required th:field="${users.firstName}">
+            <div class="invalid-feedback">
+              Неправильно заполнено!
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Фамилия</label>
+            <input type="text" class="form-control" id="lastName" placeholder="" value="" required th:field="${users.secondName}">
+            <div class="invalid-feedback">
+              Неправильно заполнено!
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="login">Логин</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="login" placeholder="Логин" required th:field="${users.login}">
+            <div style="width: 100%;" th:if="${errorMessage}" th:utext="${errorMessage}">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Пароль</label>
+          <input type="password" class="form-control" id="password" placeholder="Пароль"  required th:field="${users.pass}">
+          <div class="invalid-feedback">
+            Пароль должен состоять из не менее 6 символов, включая буквы латинского алфавита и числа.
+          </div>
+        </div>
+
+        
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Зарегестрироваться</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    
+  </footer>
+</div>
+</body>
+</html>

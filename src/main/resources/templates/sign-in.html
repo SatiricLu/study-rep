@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"/>
+    <meta name="generator" content="Jekyll v4.0.1"/>
+    <title>Signin Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/"/>
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet"/>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="styles/signin.css" rel="stylesheet"/>
+    <link href="styles/header.css" rel="stylesheet"/>
+  </head>
+  <body >
+  	<header id="header">
+    <div class="nav-span">
+      <span id="logos">ToDoList</span>
+      <nav>
+        <a class="nav-a nav-active-a" href="#">Вход</a>
+        <a class="nav-a" href="/registration">Регистрация</a>
+      </nav>
+    </div>
+  </header>
+  <main class="text-center">
+  <form class="form-signin" th:action="@{/sign-in}" th:object="${loginForm}" method="POST">
+  <img class="mb-4" src="images/TDLI.png" alt="" width="72" height="72"/>
+  <h1 class="h3 mb-3 font-weight-normal">Вход</h1>
+  <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+  </div>
+  <label for="inputEmail" class="sr-only">Логин</label>
+  <input type="text" id="inputLogin" class="form-control" placeholder="Логин" required autofocus th:field="*{login}"/>
+  <label for="inputPassword" class="sr-only">Пароль</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required th:field="*{pass}"/>
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+
+</form>
+</main>
+</body>
+</html>

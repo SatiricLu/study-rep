@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"/>
+    <meta name="generator" content="Jekyll v4.0.1"/>
+    <title>ToDoList - Категории</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/"/>
+
+    <!-- Bootstrap core CSS -->
+  <link href="assets/dist/css/bootstrap.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/category-task.css" rel="stylesheet"/>
+    <link href="styles/header.css" rel="stylesheet"/>
+  </head>
+  <body class="bg-light"><header id="header">
+    <div class="nav-span">
+      <span id="logos">ToDoList</span>
+      <nav>
+        <a class="nav-a nolinks">Пользователь:<span th:if="${username}" th:utext="${username}" /></a>
+        <a class="nav-a" href="/sign-in">Выход</a>
+      </nav>
+    </div>
+  </header>
+    <div class="container">
+  <div class="py-5 text-center">
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Категории</h4>
+      <form class="needs-validation" novalidate th:action="@{/category}"  method="POST">
+        <div class="row">
+          <div class="col-md-8 mb-4">
+            <label for="categoryName">Название категории</label>
+            <input type="text" class="form-control" id="categoryName" placeholder="" value="" th:field="${category.name}" required>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Добавить</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2020 ToDoList</p>
+  </footer>
+</div>
+</html>

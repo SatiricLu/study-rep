@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"/>
+    <meta name="generator" content="Jekyll v4.0.1"/>
+    <title>ToDoList</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/"/>
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet"/>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="styles/index-page.css" rel="stylesheet"/>
+    <link href="styles/header.css" rel="stylesheet"/>
+  </head>
+  <body class="bg-light">
+  	<header id="header">
+    <div class="nav-span">
+      <span id="logos">ToDoList</span>
+      <nav>
+        <a class="nav-a nolinks">Пользователь: <span th:if="${username}" th:utext="${username}" /></a>
+        <a class="nav-a" href="/sign-in">Выход</a>
+      </nav>
+    </div>
+  </header>
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="images/TDLI.png" alt="" width="96" height="96">
+    <h2>Главная страница</h2>
+    <p class="lead">Страница со списком категорий и задач</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Категории</span>
+        <span class="badge badge-secondary badge-pill"></span>
+      </h4>
+      <form method="post">
+      <ul class="list-group mb-3">   
+        <li class="list-group-item d-flex justify-content-between" th:if="${categories.empty}">
+          <label>Нет категорий!</label>
+        </li>    
+        <li class="list-group-item d-flex justify-content-between" th:each="category : ${categories}">
+          <label  th:text="${category.name}"></label>
+        </li>
+      </ul>
+  	  </form>
+      <form class="card p-2">
+        <div class="input-group">
+          <a href="/category" type="submit" class="btn btn-primary btn-block">Создать категорию</a>
+        </div>
+        <br>
+        <div class="input-group">
+
+          <a href="/addTask" type="submit" class="btn btn-primary btn-block">Создать задачу </a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <div class="row">
+        <div class="col-sm-8">
+          <h4 class="mb-3">Задачи</h4>
+        </div>
+        <div class="col-sm-4">
+          <a href="/task" type="submit" class="btn btn-primary btn-block">Добавить задачу </a>
+        </div>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Категория</th>
+            <th scope="col">Задача</th>
+            <th scope="col">Дата начала</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Дата завершения</th>
+          </tr>
+        </thead>
+        <tbody>
+              <tr th:if="${planners.empty}">
+                 
+              <label>Нет задач!</label>
+                  
+              </tr>
+              <tr th:each="planner : ${planners}">
+                  <th scope="row" th:text="${planner.id}"></th>
+                  <td th:text="${planner.category}"></td>
+                  <td th:text="${planner.task}"></td>
+                  <td th:text="${planner.dateStart}"></td>
+                  <td th:text="${planner.status}"></td>
+                  <td th:text="${planner.dateEnd}"></td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2020 ToDoList</p>
+  </footer>
+</div>
+</body>
+</html>
